@@ -5,14 +5,12 @@ class Play extends Phaser.Scene{
 
     preload(){
         this.load.image('el', 'assets/starfield.png');
-        this.load.image('rocket', 'assets/sq 48.png');
-        this.load.image('ship', 'assets/sq 64.png');
+        this.load.image('rocket', 'assets/rocket.png');
+        this.load.image('ship', 'assets/ship.png');
         this.load.spritesheet('explosion', 'assets/spritesheet.png', {frameWidth: 64, frameHeight: 42, startFrame: 0, endFrame: 5});
     }
 
     create() {
-
-        console.log("play dot js create reached")
 
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -110,11 +108,11 @@ class Play extends Phaser.Scene{
         const movementSpeed = game.settings.spaceshipSpeed;
 
         
-        if(keyLEFT.isDown){
-            this.p1Rocket.x -= movementSpeed;
+        if(Phaser.Input.Keyboard.JustDown(keyLEFT)){
+            this.p1Rocket.x -= 48;
         }
-        if(keyRIGHT.isDown){
-            this.p1Rocket.x += movementSpeed;
+        if(Phaser.Input.Keyboard.JustDown(keyRIGHT)){
+            this.p1Rocket.x += 48;
         }
 
         this.p1Rocket.update();
